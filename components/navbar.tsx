@@ -75,35 +75,36 @@ export function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 z-50">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">RIG</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold text-slate-900 leading-tight">RIG Global</span>
-                <span className="text-sm text-slate-600 leading-tight">Solutions</span>
-              </div>
-            </Link>
-
-            {/* Search Bar */}
-            <div className="hidden lg:flex flex-1 max-w-md mx-8">
-              <div className="relative w-full">
-                <Input
-                  placeholder="Type to search..."
-                  className="w-full pl-4 pr-10 py-2 border-slate-300 focus:border-blue-500 focus:ring-blue-500"
-                />
-                <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
-              </div>
-            </div>
-
-            {/* Menu Button */}
-            <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(true)} className="hover:bg-slate-100">
+      <header
+        className="sticky top-0 z-50 w-full backdrop-blur"
+        style={{
+          background: 'linear-gradient(86deg, rgba(129, 127, 219, 1) 0%, rgba(11, 88, 212, 1) 0%, rgba(237, 240, 240, 1) 100%)',
+        }}
+      >
+        <div className="container mx-auto px-4 ml-[5px]">
+          <div className="flex items-center h-16">
+            {/* Menu Button - Left side */}
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setIsMenuOpen(true)} 
+              className="hover:bg-white/20 mr-4 text-white"
+            >
               <Menu className="h-6 w-6" />
             </Button>
+
+            {/* Logo - Centered */}
+            <div className="flex-1 ">
+              <Link href="/" className="flex items-center space-x-3">
+                <div className="w-8 h-8 flex items-center justify-center">
+                  <img src="/RIG logo.png" alt="RIG Logo" className="h-8 w-auto" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xl font-bold text-white leading-tight">RIG Global</span>
+                  <span className="text-sm text-white/80 leading-tight">Solutions</span>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </header>
@@ -116,7 +117,7 @@ export function Navbar() {
             <div className="flex items-center justify-between p-6 border-b border-slate-700">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">RIG</span>
+                  <img src="/RIG logo.png" alt="RIG Logo" className="h-6 w-auto" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-lg font-bold leading-tight">RIG Global</span>

@@ -6,32 +6,19 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Navbar } from "@/components/navbar"
-import dynamic from "next/dynamic"
-
-const Hero3D = dynamic(() => import("@/components/hero-3d").then((m) => m.Hero3D), { ssr: false })
-const Stats3D = dynamic(() => import("@/components/stats-3d").then((m) => m.Stats3D), { ssr: false })
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <Navbar />
 
-      {/* Hero Section with 3D Network Visualization */}
-      <section className="relative pt-20 pb-16 overflow-hidden min-h-screen flex items-center">
-        {/* 3D Network Background */}
-        <div className="absolute inset-0 z-0">
-          <Hero3D />
-        </div>
-
-        {/* Professional overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/10 via-transparent to-blue-900/10 z-10"></div>
-
-        {/* Subtle pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-5 z-15"
+      {/* Hero Section */}
+      <section className="relative pt-8 pb-16 overflow-hidden min-h-screen flex items-center">
+        {/* Custom gradient background */}
+        <div 
+          className="absolute inset-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.3) 1px, transparent 0)`,
-            backgroundSize: "20px 20px",
+            background: 'linear-gradient(86deg, rgba(129, 127, 219, 1) 0%, rgba(11, 88, 212, 1) 0%, rgba(237, 240, 240, 1) 100%)',
           }}
         ></div>
 
@@ -51,9 +38,8 @@ export default function HomePage() {
 
                 <h1 className="text-5xl lg:text-7xl font-bold text-slate-900 leading-tight">
                   Transform your business with
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
-                    {" "}
-                    strategic insights
+                  <span className="text-[rgb(206,212,255)]">
+                    {" "}strategic insights
                   </span>
                 </h1>
 
@@ -94,15 +80,29 @@ export default function HomePage() {
                     key={index}
                     className="text-center backdrop-blur-sm bg-white/10 rounded-xl p-4 border border-white/20"
                   >
-                    <div className="text-2xl font-bold text-blue-600">{metric.value}</div>
-                    <div className="text-sm text-slate-600">{metric.label}</div>
+                    <div className="text-2xl font-bold text-[rgb(206,212,255)]">{metric.value}</div>
+                    <div className="text-sm text-[rgb(206,212,255)]">{metric.label}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Right side - let the 3D visualization fill this space */}
-            <div className="lg:block hidden relative">
+            {/* Right side - Image */}
+            <div className="flex justify-center items-end relative h-full w-full overflow-visible">
+              <div className="relative w-full h-full flex justify-center">
+                <img 
+                  src="/rigtemplateimage.png" 
+                  alt="RIG Global Solutions" 
+                  className="h-auto rounded-2xl w-auto 
+                    max-w-[90%] max-h-[50vh] mt-8 ml-4
+                    lg:max-w-[120%] lg:max-h-[90vh] lg:mt-0 lg:ml-8
+                    xl:max-w-[140%] xl:ml-0 xl:-mr-[5%]"
+                  style={{
+                    objectFit: 'contain',
+                    objectPosition: 'bottom',
+                  }}
+                />
+              </div>
               <div className="absolute inset-0 bg-gradient-to-l from-transparent via-blue-500/5 to-transparent rounded-3xl"></div>
             </div>
           </div>
@@ -119,7 +119,6 @@ export default function HomePage() {
               consulting
             </p>
           </div>
-          <Stats3D />
         </div>
       </section>
 
@@ -392,6 +391,7 @@ export default function HomePage() {
               </ul>
             </div>
           </div>
+
           <div className="border-t border-slate-800 mt-12 pt-8 text-center text-slate-400">
             <p>&copy; 2024 RIG Global Solutions. All rights reserved.</p>
           </div>
