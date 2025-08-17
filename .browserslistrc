@@ -1,0 +1,16 @@
+# Browsers that we support
+
+> 0.3%
+not dead
+not op_mini all
+not ie > 0
+not ie_mob > 0
+not and_uc > 0
+not and_qq > 0
+not kaios > 0
+not baidu > 0
+not blackberry > 0
+not op_mob > 0
+not android <= 4.4.4
+not samsung <= 4
+not safari < 13

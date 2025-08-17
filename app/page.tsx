@@ -94,8 +94,8 @@ export default function HomePage() {
                   src="/rigtemplateimage.png" 
                   alt="RIG Global Solutions" 
                   className="h-auto rounded-2xl w-auto 
-                    max-w-[90%] max-h-[50vh] mt-8 ml-4
-                    lg:max-w-[120%] lg:max-h-[90vh] lg:mt-0 lg:ml-8
+                    max-w-[90%] max-h-[50vh] mt-16 ml-4
+                    lg:max-w-[120%] lg:max-h-[90vh] lg:mt-8 lg:ml-8
                     xl:max-w-[140%] xl:ml-0 xl:-mr-[5%]"
                   style={{
                     objectFit: 'contain',
