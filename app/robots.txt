@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rigglobalsolutions.com/sitemap.xml
