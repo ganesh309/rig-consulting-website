@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import './globals.css'
+import { Navbar } from '@/components/navbar'
 
 // JSON-LD structured data for better SEO
 const jsonLd = {
@@ -106,7 +107,10 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
         <div className="min-h-screen w-full flex flex-col">
-          {children}
+          <Navbar />
+          <main className="flex-1">
+            {children}
+          </main>
         </div>
       </body>
     </html>

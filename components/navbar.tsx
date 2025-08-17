@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, Search, ChevronRight, X } from "lucide-react"
+import { Menu, Search, ChevronRight, ChevronLeft, X } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState<string | null>(null)
+  const [activeTab, setActiveTab] = useState<'main' | 'secondary'>('main')
 
   const industries = [
     "Aerospace & Defense",
@@ -76,7 +77,7 @@ export function Navbar() {
   return (
     <>
       <header
-        className="sticky top-0 z-50 w-full backdrop-blur"
+        className="w-full backdrop-blur z-50"
         style={{
           background: 'linear-gradient(86deg, rgba(129, 127, 219, 1) 0%, rgba(11, 88, 212, 1) 0%, rgba(237, 240, 240, 1) 100%)',
         }}
@@ -93,8 +94,8 @@ export function Navbar() {
               <Menu className="h-6 w-6" />
             </Button>
 
-            {/* Logo - Centered */}
-            <div className="flex-1 ">
+            {/* Logo */}
+            <div className="flex-1">
               <Link href="/" className="flex items-center space-x-3">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <img src="/RIG logo.png" alt="RIG Logo" className="h-8 w-auto" />
@@ -105,6 +106,40 @@ export function Navbar() {
                 </div>
               </Link>
             </div>
+            
+            {/* Navigation Buttons - Right Aligned */}
+            <nav className="hidden md:flex items-center justify-end space-x-8">
+              <Link 
+                href="/overview" 
+                className="text-white hover:text-white/90 transition-colors font-medium py-2 px-3 rounded-md hover:bg-white/10"
+              >
+                Overview
+              </Link>
+              <Link 
+                href="/services" 
+                className="text-white hover:text-white/90 transition-colors font-medium py-2 px-3 rounded-md hover:bg-white/10"
+              >
+                Our Services
+              </Link>
+              <Link 
+                href="/people/our-team"
+                className="text-white hover:text-white/90 transition-colors font-medium py-2 px-3 rounded-md hover:bg-white/10"
+              >
+                Our People
+              </Link>
+              <Link 
+                href="/careers" 
+                className="text-white hover:text-white/90 transition-colors font-medium py-2 px-3 rounded-md hover:bg-white/10"
+              >
+                Careers
+              </Link>
+              <Link 
+                href="/contact" 
+                className="text-white hover:text-white/90 transition-colors font-medium py-2 px-3 rounded-md hover:bg-white/10"
+              >
+                Contact Us
+              </Link>
+            </nav>
           </div>
         </div>
       </header>
@@ -134,13 +169,65 @@ export function Navbar() {
               </Button>
             </div>
 
-            <nav className="flex-1 p-6 space-y-2">
-              {[
+            <nav className="flex-1 flex flex-col overflow-hidden">
+              {/* Tab Navigation */}
+              <div className="flex items-center justify-between p-4 border-b border-slate-700">
+                <button
+                  onClick={() => setActiveTab('main')}
+                  className={`flex-1 py-2 text-center font-medium ${activeTab === 'main' ? 'text-white border-b-2 border-blue-500' : 'text-slate-400'}`}
+                >
+                  Main Menu
+                </button>
+                <button
+                  onClick={() => setActiveTab('secondary')}
+                  className={`flex-1 py-2 text-center font-medium ${activeTab === 'secondary' ? 'text-white border-b-2 border-blue-500' : 'text-slate-400'}`}
+                >
+                  More
+                </button>
+              </div>
+
+              {/* Tab Content */}
+              <div className="flex-1 overflow-y-auto">
+                {activeTab === 'main' ? (
+                  <div className="p-4 space-y-2">
+                    {[
+                      { name: "Overview", href: "/overview" },
+                      { name: "Our Services", href: "/services" },
+                      { name: "Our People", href: "/people/our-team" },
+                      { name: "Careers", href: "/careers" },
+                      { name: "Contact Us", href: "/contact" },
+                    ].map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block p-3 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                    <div className="flex justify-end pt-4">
+                      <button
+                        onClick={() => setActiveTab('secondary')}
+                        className="flex items-center text-blue-400 hover:text-blue-300"
+                      >
+                        More Options <ChevronRight className="ml-1 h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-4 space-y-2">
+                    <button
+                      onClick={() => setActiveTab('main')}
+                      className="flex items-center text-blue-400 hover:text-blue-300 mb-4"
+                    >
+                      <ChevronLeft className="mr-1 h-4 w-4" /> Back to Main
+                    </button>
+                    {[
                 { name: "Industries", key: "industries" },
                 { name: "Capabilities", key: "capabilities" },
                 { name: "Featured Insights", key: "insights" },
                 { name: "Locations", key: "locations" },
-                { name: "Careers", key: "careers" },
                 { name: "About Us", key: "about" },
                 { name: "RIG Blog", key: "blog" },
                 { name: "Global", key: "global" },
@@ -162,6 +249,9 @@ export function Navbar() {
                   )}
                 </button>
               ))}
+                    </div>
+                )}
+              </div>
             </nav>
           </div>
 

@@ -5,13 +5,10 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Navbar } from "@/components/navbar"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      <Navbar />
-
       {/* Hero Section */}
       <section className="relative pt-8 pb-16 overflow-hidden min-h-screen flex items-center">
         {/* Custom gradient background */}
@@ -72,8 +69,8 @@ export default function HomePage() {
               {/* Key metrics */}
               <div className="grid grid-cols-3 gap-4 pt-8">
                 {[
-                  { value: "500+", label: "Global Clients" },
-                  { value: "50+", label: "Countries" },
+                  { value: "50+", label: "Global Clients" },
+                  { value: "20+", label: "Countries" },
                   { value: "95%", label: "Success Rate" },
                 ].map((metric, index) => (
                   <div
@@ -299,9 +296,11 @@ export default function HomePage() {
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Connect with our experts to discuss how we can help you achieve your most ambitious goals.
           </p>
-          <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-blue-50">
-            Contact Us <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          <Link href="/contact">
+            <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-blue-50">
+              Contact Us <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </section>
 
