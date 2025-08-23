@@ -4,6 +4,19 @@ import Link from "next/link"
 export default function ServicesPage() {
   const services = [
     {
+      title: 'Startup Success Package',
+      description: 'End-to-end solutions for launching and scaling your startup with confidence, covering strategy, compliance, branding, digital setup, and founder enablement.',
+      icon: <Zap className="h-8 w-8 text-blue-600" />,
+      features: [
+        'Advisory & Strategy',
+        'Legal & Compliance Setup',
+        'Branding & Marketing',
+        'IT & Digital Setup',
+        "Pitch-Ready Founder's Kit",
+        'Guided Execution & Support'
+      ]
+    },
+    {
       title: 'Strategy Consulting',
       description: 'Comprehensive business strategy development and implementation planning to drive sustainable growth and competitive advantage.',
       icon: <BarChart2 className="h-8 w-8 text-blue-600" />,
@@ -32,12 +45,6 @@ export default function ServicesPage() {
       description: 'Scalable and secure cloud infrastructure solutions to support your business growth.',
       icon: <Server className="h-8 w-8 text-blue-600" />,
       features: ['Cloud Migration', 'Hybrid Solutions', 'Managed Services', 'DevOps']
-    },
-    {
-      title: 'Cybersecurity',
-      description: 'Comprehensive security solutions to protect your digital assets and ensure compliance.',
-      icon: <Lock className="h-8 w-8 text-blue-600" />,
-      features: ['Risk Assessment', 'Security Audits', 'Threat Protection', 'Compliance']
     }
   ];
 
@@ -92,7 +99,7 @@ export default function ServicesPage() {
                   ))}
                 </ul>
                 <Link 
-                  href="/contact" 
+                  href={service.title === 'Startup Success Package' ? '/services/startup-success-package' : '/contact'}
                   className="inline-flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors"
                 >
                   Learn more
