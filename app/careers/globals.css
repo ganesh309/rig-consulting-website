@@ -1,0 +1,40 @@
+/* Custom styles for the careers section */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add any custom styles specific to the careers section below */
+:root {
+  --foreground-rgb: 17, 24, 39; /* gray-900 */
+  --background-start-rgb: 253, 251, 248; /* Custom light beige */
+  --background-end-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
